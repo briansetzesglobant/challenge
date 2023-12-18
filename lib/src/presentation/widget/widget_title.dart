@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class PersonName extends StatelessWidget {
-  final String name;
+class WidgetTitle extends StatelessWidget {
+  final String title;
 
-  const PersonName({
+  const WidgetTitle({
     super.key,
-    required this.name,
+    required this.title,
   });
 
   @override
@@ -16,7 +16,7 @@ class PersonName extends StatelessWidget {
         bottom: 10.0,
       ),
       child: Text(
-        name,
+        title,
         textAlign: TextAlign.center,
         style: const TextStyle(
           color: Colors.blue,

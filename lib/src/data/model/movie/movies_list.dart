@@ -1,10 +1,10 @@
-import '../../domain/entity/persons_list_entity.dart';
-import 'person.dart';
+import '../../../domain/entity/movie/movies_list_entity.dart';
+import 'movie.dart';
 
-class PersonsList extends PersonsListEntity {
-  PersonsList({
+class MoviesList extends MoviesListEntity {
+  MoviesList({
     required int page,
-    required List<Person> results,
+    required List<Movie> results,
     required int totalPages,
     required int totalResults,
   }) : super(
@@ -14,13 +14,13 @@ class PersonsList extends PersonsListEntity {
           totalResults: totalResults,
         );
 
-  factory PersonsList.fromJson(Map<String, dynamic> json) {
+  factory MoviesList.fromJson(Map<String, dynamic> json) {
     var jsonList = json['results'] as List;
-    List<Person> personsList =
-        jsonList.map((person) => Person.fromJson(person)).toList();
-    return PersonsList(
+    List<Movie> moviesList =
+        jsonList.map((movie) => Movie.fromJson(movie)).toList();
+    return MoviesList(
       page: json['page'],
-      results: personsList,
+      results: moviesList,
       totalPages: json['total_pages'],
       totalResults: json['total_results'],
     );

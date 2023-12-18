@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PersonText extends StatelessWidget {
-  const PersonText({
+class WidgetText extends StatelessWidget {
+  const WidgetText({
     Key? key,
     required this.text,
   }) : super(

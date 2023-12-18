@@ -1,15 +1,15 @@
-import 'package:challenge/src/presentation/widget/first_tab/person_movies.dart';
+import 'package:challenge/src/presentation/widget/widget_movies.dart';
 import 'package:flutter/material.dart';
-import '../../../domain/entity/person_movie_entity.dart';
+import '../../../domain/entity/movie/movie_entity.dart';
 import 'person_image.dart';
-import 'person_name.dart';
+import '../widget_title.dart';
 import 'person_popularity.dart';
 
 class PersonPage extends StatelessWidget {
   final String personName;
   final String posterPath;
   final num popularity;
-  final List<PersonMovieEntity> movies;
+  final List<MovieEntity> movies;
 
   const PersonPage({
     super.key,
@@ -24,8 +24,8 @@ class PersonPage extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          PersonName(
-            name: personName,
+          WidgetTitle(
+            title: personName,
           ),
           PersonImage(
             posterPath: posterPath,
@@ -33,7 +33,7 @@ class PersonPage extends StatelessWidget {
           PersonPopularity(
             popularity: popularity,
           ),
-          PersonMovies(
+          WidgetMovies(
             movies: movies,
           ),
         ],

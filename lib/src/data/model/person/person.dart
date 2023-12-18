@@ -1,13 +1,13 @@
-import '../../domain/entity/person_entity.dart';
-import '../../domain/entity/person_movie_entity.dart';
-import 'person_movie.dart';
+import '../../../domain/entity/movie/movie_entity.dart';
+import '../../../domain/entity/person/person_entity.dart';
+import '../movie/movie.dart';
 
 class Person extends PersonEntity {
   Person({
     required bool adult,
     required int gender,
     required int id,
-    required List<PersonMovieEntity> knownFor,
+    required List<MovieEntity> knownFor,
     required String knownForDepartment,
     required String name,
     required num popularity,
@@ -25,14 +25,14 @@ class Person extends PersonEntity {
 
   factory Person.fromJson(Map<String, dynamic> json) {
     var jsonList = json['known_for'] as List;
-    List<PersonMovie> personMoviesList = jsonList
-        .map((personMovie) => PersonMovie.fromJson(personMovie))
+    List<Movie> moviesList = jsonList
+        .map((movie) => Movie.fromJson(movie))
         .toList();
     return Person(
       adult: json['adult'],
       gender: json['gender'],
       id: json['id'],
-      knownFor: personMoviesList,
+      knownFor: moviesList,
       knownForDepartment: json['known_for_department'],
       name: json['name'],
       popularity: json['popularity'],
@@ -45,7 +45,7 @@ class Person extends PersonEntity {
       'adult': adult,
       'gender': gender,
       'id': id,
-      'known_for': knownFor.map((personMovie) => personMovie).toList(),
+      'known_for': knownFor.map((movie) => movie).toList(),
       'known_for_department': knownForDepartment,
       'name': name,
       'popularity': popularity,

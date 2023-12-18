@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:challenge/src/core/util/endpoints.dart';
-import 'package:challenge/src/data/model/persons_list.dart';
+import 'package:challenge/src/data/model/person/persons_list.dart';
 import 'package:http/http.dart';
 import '../../../core/resource/data_state.dart';
 import '../../../core/util/strings.dart';
-import '../../../domain/entity/persons_list_entity.dart';
+import '../../../domain/entity/movie/movies_list_entity.dart';
+import '../../../domain/entity/person/persons_list_entity.dart';
+import '../../model/movie/movies_list.dart';
 
 class ApiService {
   Client client = Client();
@@ -14,7 +16,7 @@ class ApiService {
     try {
       final response = await client.get(
         Uri.parse(
-          '${Endpoints.uri}${Endpoints.endpointPopularMovies}${Endpoints.apiKeyParameter}${Endpoints.apiKey}',
+          '${Endpoints.uri}${Endpoints.endpointPerson}${Endpoints.endpointPopular}${Endpoints.apiKeyParameter}${Endpoints.apiKey}',
         ),
       );
       if (response.statusCode == HttpStatus.ok) {
@@ -30,12 +32,110 @@ class ApiService {
         }
       } else {
         return DataFailed(
-          '${Strings.error} ${response.statusCode}',
+          '${Strings.errorMessage} ${response.statusCode}',
         );
       }
     } catch (exception) {
       return DataFailed(
-        '${Strings.error} ${exception.toString()}',
+        '${Strings.errorMessage} ${exception.toString()}',
+      );
+    }
+  }
+
+  Future<DataState<MoviesListEntity>> getPopularMoviesList() async {
+    try {
+      final response = await client.get(
+        Uri.parse(
+          '${Endpoints.uri}${Endpoints.endpointMovie}${Endpoints.endpointPopular}${Endpoints.apiKeyParameter}${Endpoints.apiKey}',
+        ),
+      );
+      if (response.statusCode == HttpStatus.ok) {
+        MoviesList moviesList = MoviesList.fromJson(
+          json.decode(
+            response.body,
+          ),
+        );
+        if (moviesList.results.isNotEmpty) {
+          return DataSuccess(
+            moviesList,
+          );
+        } else {
+          return const DataEmpty();
+        }
+      } else {
+        return DataFailed(
+          '${Strings.errorMessage} ${response.statusCode}',
+        );
+      }
+    } catch (exception) {
+      return DataFailed(
+        '${Strings.errorMessage} ${exception.toString()}',
+      );
+    }
+  }
+
+  Future<DataState<MoviesListEntity>> getTopRatedMoviesList() async {
+    try {
+      final response = await client.get(
+        Uri.parse(
+          '${Endpoints.uri}${Endpoints.endpointMovie}${Endpoints.endpointTopRated}${Endpoints.apiKeyParameter}${Endpoints.apiKey}',
+        ),
+      );
+      if (response.statusCode == HttpStatus.ok) {
+        MoviesList moviesList = MoviesList.fromJson(
+          json.decode(
+            response.body,
+          ),
+        );
+        if (moviesList.results.isNotEmpty) {
+          return DataSuccess(
+            moviesList,
+          );
+        } else {
+          return const DataEmpty();
+        }
+      } else {
+        return DataFailed(
+          '${Strings.errorMessage} ${response.statusCode}',
+        );
+      }
+    } catch (exception) {
+      return DataFailed(
+        '${Strings.errorMessage} ${exception.toString()}',
+      );
+    }
+  }
+
+  Future<DataState<MoviesListEntity>> getRecommendationsMoviesList({
+    required int id,
+  }) async {
+    try {
+      final response = await client.get(
+        Uri.parse(
+          '${Endpoints.uri}${Endpoints.endpointMovie}$id${Endpoints.endpointRecommendations}${Endpoints.apiKeyParameter}${Endpoints.apiKey}',
+        ),
+      );
+      if (response.statusCode == HttpStatus.ok) {
+        MoviesList moviesList = MoviesList.fromJson(
+          json.decode(
+            response.body,
+          ),
+        );
+        if (moviesList.results.isNotEmpty) {
+          return DataSuccess(
+            moviesList,
+          );
+        } else {
+          return const DataEmpty();
+        }
+      } else {
+        return DataFailed(
+          '${Strings.errorMessage} ${response.statusCode}',
+        );
+      }
+    } catch (exception) {
+      return DataFailed(
+        '${Strings.errorMessage} ${exception.toString()}',
       );
     }
   }

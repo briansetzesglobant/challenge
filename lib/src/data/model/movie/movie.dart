@@ -1,7 +1,7 @@
-import 'package:challenge/src/domain/entity/person_movie_entity.dart';
+import '../../../domain/entity/movie/movie_entity.dart';
 
-class PersonMovie extends PersonMovieEntity {
-  PersonMovie({
+class Movie extends MovieEntity {
+  Movie({
     required bool adult,
     required String backdropPath,
     required List<int> genreIds,
@@ -10,6 +10,7 @@ class PersonMovie extends PersonMovieEntity {
     required String originalLanguage,
     required String originalTitle,
     required String overview,
+    required num popularity,
     required String posterPath,
     required String releaseDate,
     required String title,
@@ -25,6 +26,7 @@ class PersonMovie extends PersonMovieEntity {
           originalLanguage: originalLanguage,
           originalTitle: originalTitle,
           overview: overview,
+          popularity: popularity,
           posterPath: posterPath,
           releaseDate: releaseDate,
           title: title,
@@ -33,19 +35,20 @@ class PersonMovie extends PersonMovieEntity {
           voteCount: voteCount,
         );
 
-  factory PersonMovie.fromJson(Map<String, dynamic> json) {
+  factory Movie.fromJson(Map<String, dynamic> json) {
     var jsonList = json['genre_ids'] as List?;
     List<int> genreIdsList =
         jsonList?.map((genreId) => genreId as int).toList() ?? [];
-    return PersonMovie(
+    return Movie(
       adult: json['adult'],
       backdropPath: json['backdrop_path'] ?? '',
       genreIds: genreIdsList,
       id: json['id'],
-      mediaType: json['media_type'],
+      mediaType: json['media_type'] ?? '',
       originalLanguage: json['original_language'],
       originalTitle: json['original_title'] ?? '',
       overview: json['overview'],
+      popularity: json['popularity'] ?? 0.0,
       posterPath: json['poster_path'] ?? '',
       releaseDate: json['release_date'] ?? '',
       title: json['title'] ?? '',
@@ -65,6 +68,7 @@ class PersonMovie extends PersonMovieEntity {
       'original_language': originalLanguage,
       'original_title': originalTitle,
       'overview': overview,
+      'popularity': popularity,
       'poster_path': posterPath,
       'release_date': releaseDate,
       'title': title,

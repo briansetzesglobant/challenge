@@ -1,10 +1,10 @@
 import 'package:challenge/src/presentation/widget/first_tab/person_page.dart';
 import 'package:flutter/material.dart';
-import '../../core/bloc/bloc_interface.dart';
+import '../../core/bloc/person_bloc_interface.dart';
 import '../../core/resource/data_state.dart';
-import '../../domain/entity/persons_list_entity.dart';
-import '../bloc/bloc.dart';
-import '../widget/person_text.dart';
+import '../../domain/entity/person/persons_list_entity.dart';
+import '../bloc/person_bloc.dart';
+import '../widget/widget_text.dart';
 
 class FirstTab extends StatefulWidget {
   const FirstTab({
@@ -19,7 +19,7 @@ class FirstTab extends StatefulWidget {
 }
 
 class _FirstTabState extends State<FirstTab> {
-  final BlocInterface _blocInterface = PersonBloc();
+  final PersonBlocInterface _blocInterface = PersonBloc();
 
   @override
   void initState() {
@@ -51,7 +51,7 @@ class _FirstTabState extends State<FirstTab> {
               Icons.account_circle_outlined,
               size: 100.0,
             ),
-            PersonText(
+            WidgetText(
               text: 'No person to show',
             ),
           ],
@@ -64,7 +64,7 @@ class _FirstTabState extends State<FirstTab> {
               Icons.error,
               size: 100.0,
             ),
-            PersonText(
+            WidgetText(
               text: personsList.error!,
             ),
           ],

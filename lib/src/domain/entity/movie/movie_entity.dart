@@ -1,5 +1,5 @@
-class PersonMovieEntity {
-  PersonMovieEntity({
+class MovieEntity {
+  MovieEntity({
     required this.adult,
     required this.backdropPath,
     required this.genreIds,
@@ -8,6 +8,7 @@ class PersonMovieEntity {
     required this.originalLanguage,
     required this.originalTitle,
     required this.overview,
+    required this.popularity,
     required this.posterPath,
     required this.releaseDate,
     required this.title,
@@ -24,6 +25,7 @@ class PersonMovieEntity {
   final String originalLanguage;
   final String? originalTitle;
   final String overview;
+  final num popularity;
   final String? posterPath;
   final String? releaseDate;
   final String? title;
