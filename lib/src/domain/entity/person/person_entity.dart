@@ -1,4 +1,4 @@
-import 'person_movie_entity.dart';
+import '../movie/movie_entity.dart';
 
 class PersonEntity {
   PersonEntity({
@@ -15,7 +15,7 @@ class PersonEntity {
   final bool adult;
   final int gender;
   final int id;
-  final List<PersonMovieEntity> knownFor;
+  final List<MovieEntity> knownFor;
   final String knownForDepartment;
   final String name;
   final num popularity;
