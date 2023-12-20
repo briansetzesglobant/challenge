@@ -1,9 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'src/config/route/app_routes.dart';
+import 'src/core/resource/map_notification_service.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initNotifications();
   Firebase.initializeApp().then((value) {
     runApp(
       const MyApp(),

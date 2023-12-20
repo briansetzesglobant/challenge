@@ -1,6 +1,7 @@
 abstract class Strings {
   static const String errorMessage =
       'An error has occurred while loading movies:';
+  static const String locationCollectionName = 'location';
 
   static const String imagesPageDefaultMessageDeviceImages =
       'No images selected';
@@ -20,4 +21,15 @@ abstract class Strings {
       'No images selected to save';
   static const String imageStorageCache = 'cache/';
   static const String imageStorageImages = 'images';
+
+  static const String mapOpenStreetMap =
+      'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+  static const String mapExample = 'com.example.app';
+  static const String mapDateFormat = 'dd/MM/yyyy hh:mm:ss a';
+  static const String mapNotificationIcon = 'notification_icon';
+  static const String mapNotificationChannelId = 'channelId';
+  static const String mapNotificationChannelName = 'channelName';
+  static const String mapNotificationTitle = 'New location detected';
+  static const String mapNotificationBody =
+      'A location was inserted into the database';
 }

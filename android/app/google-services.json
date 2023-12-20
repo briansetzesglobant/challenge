@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "850888105180",
-    "project_id": "challenge-f532b",
-    "storage_bucket": "challenge-f532b.appspot.com"
+    "project_number": "1007292711654",
+    "project_id": "challengeapp-b9537",
+    "storage_bucket": "challengeapp-b9537.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:850888105180:android:b452e6d33e7be957dfe819",
+        "mobilesdk_app_id": "1:1007292711654:android:16d81466a06f2797f0b127",
         "android_client_info": {
           "package_name": "com.example.challenge"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCyTN_iBZn30M2tOFwpFSeQyrPbg0qwGbE"
+          "current_key": "AIzaSyCFUtgCNKb2S7YWaA2zXKtZWnwCVy4tzXE"
         }
       ],
       "services": {
