@@ -14,10 +14,10 @@ class MoviesList extends MoviesListEntity {
           totalResults: totalResults,
         );
 
-  factory MoviesList.fromJson(Map<String, dynamic> json) {
+  factory MoviesList.fromJson(Map<String, dynamic> json, String category) {
     var jsonList = json['results'] as List;
     List<Movie> moviesList =
-        jsonList.map((movie) => Movie.fromJson(movie)).toList();
+        jsonList.map((movie) => Movie.fromJson(movie, category)).toList();
     return MoviesList(
       page: json['page'],
       results: moviesList,

@@ -54,6 +54,7 @@ class ApiService {
           json.decode(
             response.body,
           ),
+          'Popular',
         );
         if (moviesList.results.isNotEmpty) {
           return DataSuccess(
@@ -86,6 +87,7 @@ class ApiService {
           json.decode(
             response.body,
           ),
+          'TopRated',
         );
         if (moviesList.results.isNotEmpty) {
           return DataSuccess(
@@ -120,6 +122,7 @@ class ApiService {
           json.decode(
             response.body,
           ),
+          'Recommendations',
         );
         if (moviesList.results.isNotEmpty) {
           return DataSuccess(
