@@ -109,9 +109,12 @@ class ApiService {
   }
 
   Future<DataState<MoviesListEntity>> getRecommendationsMoviesList({
-    required int id,
+    required int? id,
   }) async {
     try {
+      if (id == null) {
+        return const DataEmpty();
+      }
       final response = await client.get(
         Uri.parse(
           '${Endpoints.uri}${Endpoints.endpointMovie}$id${Endpoints.endpointRecommendations}${Endpoints.apiKeyParameter}${Endpoints.apiKey}',

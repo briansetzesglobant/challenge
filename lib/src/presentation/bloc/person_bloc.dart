@@ -29,7 +29,7 @@ class PersonBloc extends PersonBlocInterface {
 
   @override
   void getPersonsList() async {
-    final personsList = await useCaseInterface();
+    final DataState<PersonsListEntity> personsList = await useCaseInterface();
     _personsListStreamController.sink.add(personsList);
   }
 }

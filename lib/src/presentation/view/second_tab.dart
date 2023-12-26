@@ -1,10 +1,10 @@
 import 'package:challenge/src/presentation/bloc/movie_bloc.dart';
-import 'package:challenge/src/presentation/widget/widget_title.dart';
+import 'package:challenge/src/presentation/widget/widget_empty.dart';
 import 'package:flutter/material.dart';
-
 import '../../core/bloc/movie_bloc_interface.dart';
 import '../../core/resource/data_state.dart';
 import '../../domain/entity/movie/movies_list_entity.dart';
+import '../widget/widget_error.dart';
 import '../widget/widget_movies.dart';
 import '../widget/widget_text.dart';
 
@@ -27,9 +27,13 @@ class _SecondTabState extends State<SecondTab> {
   void initState() {
     super.initState();
     _blocInterface.initialize();
+    _getMoviesLists();
+  }
+
+  void _getMoviesLists() async {
     _blocInterface.getPopularMoviesList();
-    _blocInterface.getTopRatedMoviesList();
-    _blocInterface.getRecommendationsMoviesList(id: 3);
+    _blocInterface.getRecommendationsMoviesList(
+        id: await _blocInterface.getTopRatedMoviesList());
   }
 
   @override
@@ -45,30 +49,13 @@ class _SecondTabState extends State<SecondTab> {
           movies: moviesList.data!.results,
         );
       case DataStateType.empty:
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(
-              Icons.movie,
-              size: 100.0,
-            ),
-            WidgetText(
-              text: 'No movies to show',
-            ),
-          ],
+        return const WidgetEmpty(
+          icon: Icons.movie,
+          message: 'No movies to show',
         );
       case DataStateType.error:
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.error,
-              size: 100.0,
-            ),
-            WidgetText(
-              text: moviesList.error!,
-            ),
-          ],
+        return WidgetError(
+          error: moviesList.error!,
         );
     }
   }
@@ -77,8 +64,8 @@ class _SecondTabState extends State<SecondTab> {
       String title, Stream<DataState<MoviesListEntity>> stream) {
     return Column(
       children: [
-        WidgetTitle(
-          title: title,
+        WidgetText(
+          text: title,
         ),
         StreamBuilder<DataState<MoviesListEntity>>(
           stream: stream,
@@ -108,7 +95,7 @@ class _SecondTabState extends State<SecondTab> {
               'Popular Movies', _blocInterface.popularMoviesListStream),
           _streamBuilder(
               'Top Rated Movies', _blocInterface.topRatedMoviesListStream),
-          _streamBuilder('Recommendations Movies',
+          _streamBuilder('Recommendations Movies from Top Rated',
               _blocInterface.recommendationsMoviesListStream),
         ],
       ),

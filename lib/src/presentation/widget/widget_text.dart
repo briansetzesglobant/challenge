@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 
 class WidgetText extends StatelessWidget {
   const WidgetText({
-    Key? key,
+    super.key,
     required this.text,
-  }) : super(
-          key: key,
-        );
+  });
 
   final String text;
 
@@ -14,13 +12,14 @@ class WidgetText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(
-          20.0,
+        padding: const EdgeInsets.only(
+          top: 20.0,
+          bottom: 10.0,
         ),
         child: Text(
           text,
           style: const TextStyle(
-            fontSize: 40.0,
+            fontSize: 38.0,
             color: Colors.blue,
             fontWeight: FontWeight.bold,
           ),

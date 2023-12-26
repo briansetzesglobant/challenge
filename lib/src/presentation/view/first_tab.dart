@@ -1,10 +1,11 @@
 import 'package:challenge/src/presentation/widget/first_tab/person_page.dart';
+import 'package:challenge/src/presentation/widget/widget_error.dart';
 import 'package:flutter/material.dart';
 import '../../core/bloc/person_bloc_interface.dart';
 import '../../core/resource/data_state.dart';
 import '../../domain/entity/person/persons_list_entity.dart';
 import '../bloc/person_bloc.dart';
-import '../widget/widget_text.dart';
+import '../widget/widget_empty.dart';
 
 class FirstTab extends StatefulWidget {
   const FirstTab({
@@ -44,30 +45,13 @@ class _FirstTabState extends State<FirstTab> {
           movies: personsList.data!.results.first.knownFor,
         );
       case DataStateType.empty:
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(
-              Icons.account_circle_outlined,
-              size: 100.0,
-            ),
-            WidgetText(
-              text: 'No persons to show',
-            ),
-          ],
+        return const WidgetEmpty(
+          icon: Icons.account_circle_outlined,
+          message: 'No persons to show',
         );
       case DataStateType.error:
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.error,
-              size: 100.0,
-            ),
-            WidgetText(
-              text: personsList.error!,
-            ),
-          ],
+        return WidgetError(
+          error: personsList.error!,
         );
     }
   }
