@@ -10,13 +10,14 @@ class Movie extends MovieEntity {
     required String originalLanguage,
     required String originalTitle,
     required String overview,
-    required num popularity,
+    required double popularity,
     required String posterPath,
     required String releaseDate,
     required String title,
     required bool video,
-    required num voteAverage,
+    required double voteAverage,
     required int voteCount,
+    required String category,
   }) : super(
           adult: adult,
           backdropPath: backdropPath,
@@ -33,9 +34,10 @@ class Movie extends MovieEntity {
           video: video,
           voteAverage: voteAverage,
           voteCount: voteCount,
+          category: category,
         );
 
-  factory Movie.fromJson(Map<String, dynamic> json) {
+  factory Movie.fromJson(Map<String, dynamic> json, [String category = '']) {
     var jsonList = json['genre_ids'] as List?;
     List<int> genreIdsList =
         jsonList?.map((genreId) => genreId as int).toList() ?? [];
@@ -48,33 +50,16 @@ class Movie extends MovieEntity {
       originalLanguage: json['original_language'],
       originalTitle: json['original_title'] ?? '',
       overview: json['overview'],
-      popularity: json['popularity'] ?? 0.0,
+      popularity: json['popularity'] != null
+          ? (json['popularity'] as num).toDouble()
+          : 0.0,
       posterPath: json['poster_path'] ?? '',
       releaseDate: json['release_date'] ?? '',
       title: json['title'] ?? '',
       video: json['video'] ?? false,
-      voteAverage: json['vote_average'],
+      voteAverage: (json['vote_average'] as num).toDouble(),
       voteCount: json['vote_count'],
+      category: category,
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return <String, dynamic>{
-      'adult': adult,
-      'backdrop_path': backdropPath,
-      'genre_ids': genreIds.map((genreId) => genreId).toList(),
-      'id': id,
-      'media_type': mediaType,
-      'original_language': originalLanguage,
-      'original_title': originalTitle,
-      'overview': overview,
-      'popularity': popularity,
-      'poster_path': posterPath,
-      'release_date': releaseDate,
-      'title': title,
-      'video': video,
-      'vote_average': voteAverage,
-      'vote_count': voteCount,
-    };
   }
 }

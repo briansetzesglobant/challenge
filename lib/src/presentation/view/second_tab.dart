@@ -49,11 +49,11 @@ class _SecondTabState extends State<SecondTab> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
             Icon(
-              Icons.account_circle_outlined,
+              Icons.movie,
               size: 100.0,
             ),
             WidgetText(
-              text: 'No person to show',
+              text: 'No movies to show',
             ),
           ],
         );

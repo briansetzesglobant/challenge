@@ -10,7 +10,7 @@ class Person extends PersonEntity {
     required List<MovieEntity> knownFor,
     required String knownForDepartment,
     required String name,
-    required num popularity,
+    required double popularity,
     required String profilePath,
   }) : super(
           adult: adult,
@@ -25,9 +25,8 @@ class Person extends PersonEntity {
 
   factory Person.fromJson(Map<String, dynamic> json) {
     var jsonList = json['known_for'] as List;
-    List<Movie> moviesList = jsonList
-        .map((movie) => Movie.fromJson(movie))
-        .toList();
+    List<Movie> moviesList =
+        jsonList.map((movie) => Movie.fromJson(movie)).toList();
     return Person(
       adult: json['adult'],
       gender: json['gender'],
@@ -35,21 +34,8 @@ class Person extends PersonEntity {
       knownFor: moviesList,
       knownForDepartment: json['known_for_department'],
       name: json['name'],
-      popularity: json['popularity'],
+      popularity: (json['popularity'] as num).toDouble(),
       profilePath: json['profile_path'],
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return <String, dynamic>{
-      'adult': adult,
-      'gender': gender,
-      'id': id,
-      'known_for': knownFor.map((movie) => movie).toList(),
-      'known_for_department': knownForDepartment,
-      'name': name,
-      'popularity': popularity,
-      'profile_path': profilePath,
-    };
   }
 }

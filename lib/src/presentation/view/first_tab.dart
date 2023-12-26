@@ -52,7 +52,7 @@ class _FirstTabState extends State<FirstTab> {
               size: 100.0,
             ),
             WidgetText(
-              text: 'No person to show',
+              text: 'No persons to show',
             ),
           ],
         );
