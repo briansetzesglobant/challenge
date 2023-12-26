@@ -50,21 +50,23 @@ class MovieBloc extends MovieBlocInterface {
 
   @override
   void getPopularMoviesList() async {
-    final moviesList = await popularUseCase();
+    final DataState<MoviesListEntity> moviesList = await popularUseCase();
     _popularMoviesListStreamController.sink.add(moviesList);
   }
 
   @override
-  void getTopRatedMoviesList() async {
-    final moviesList = await topRatedUseCase();
+  Future<int?> getTopRatedMoviesList() async {
+    final DataState<MoviesListEntity> moviesList = await topRatedUseCase();
     _topRatedMoviesListStreamController.sink.add(moviesList);
+    return moviesList.data?.first.id;
   }
 
   @override
   void getRecommendationsMoviesList({
-    required int id,
+    required int? id,
   }) async {
-    final moviesList = await recommendationsUseCase(id: id);
+    final DataState<MoviesListEntity> moviesList =
+        await recommendationsUseCase(id: id);
     _recommendationsMoviesListStreamController.sink.add(moviesList);
   }
 }

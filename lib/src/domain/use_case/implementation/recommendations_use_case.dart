@@ -10,6 +10,6 @@ class RecommendationsMovieUseCase extends UseCaseInterface {
   Future<DataState<MoviesListEntity>> call({
     int? id,
   }) async {
-    return await repository.getRecommendationsMoviesList(id: id!);
+    return await repository.getRecommendationsMoviesList(id: id);
   }
 }

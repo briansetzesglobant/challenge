@@ -38,7 +38,7 @@ class _ThirdTabState extends State<ThirdTab> {
     return Container(
       color: Colors.blue,
       width: 280.0,
-      height: 180.0,
+      height: 210.0,
       child: Center(
         child: Text(
           text,
@@ -67,7 +67,7 @@ class _ThirdTabState extends State<ThirdTab> {
             return Container(
               color: Colors.blue,
               width: 280.0,
-              height: 180.0,
+              height: 210.0,
               child: ListView.builder(
                 itemCount: snapshot.data!.length,
                 itemBuilder: (
@@ -113,7 +113,7 @@ class _ThirdTabState extends State<ThirdTab> {
             return Container(
               color: Colors.blue,
               width: 280.0,
-              height: 180.0,
+              height: 210.0,
               child: ListView.builder(
                 itemCount: snapshot.data!.length,
                 itemBuilder: (
@@ -207,7 +207,7 @@ class _ThirdTabState extends State<ThirdTab> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 15.0,
+              height: 10.0,
             ),
             const Padding(
               padding: EdgeInsets.only(
@@ -222,7 +222,7 @@ class _ThirdTabState extends State<ThirdTab> {
             ),
             _showSelectedImages(),
             const SizedBox(
-              height: 15.0,
+              height: 10.0,
             ),
             const Padding(
               padding: EdgeInsets.only(
@@ -237,36 +237,41 @@ class _ThirdTabState extends State<ThirdTab> {
             ),
             _showStoredImages(),
             const SizedBox(
-              height: 15.0,
-            ),
-            ImageButton(
-              text: Strings.imagesPageTextButtonDeviceImages,
-              onPressed: () {
-                _showChoiceDialog(context);
-              },
-            ),
-            const SizedBox(
               height: 10.0,
             ),
-            ImageButton(
-              text: Strings.imagesPageTextButtonStorageImages,
-              onPressed: () async {
-                imagesBloc.getStorageImages();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    backgroundColor: Colors.blue,
-                    content: Text(
-                      imagesBloc.hasSelectedImages()
-                          ? Strings.imagesPageSnackBarWithImages
-                          : Strings.imagesPageSnackBarWithoutImages,
-                      style: const TextStyle(
-                        fontSize: 17.0,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ImageButton(
+                  text: Strings.imagesPageTextButtonDeviceImages,
+                  onPressed: () {
+                    _showChoiceDialog(context);
+                  },
+                ),
+                const SizedBox(
+                  width: 15.0,
+                ),
+                ImageButton(
+                  text: Strings.imagesPageTextButtonStorageImages,
+                  onPressed: () async {
+                    imagesBloc.getStorageImages();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: Colors.blue,
+                        content: Text(
+                          imagesBloc.hasSelectedImages()
+                              ? Strings.imagesPageSnackBarWithImages
+                              : Strings.imagesPageSnackBarWithoutImages,
+                          style: const TextStyle(
+                            fontSize: 17.0,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                );
-              },
+                    );
+                  },
+                ),
+              ],
             ),
           ],
         ),

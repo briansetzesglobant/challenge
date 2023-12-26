@@ -11,9 +11,9 @@ abstract class MovieBlocInterface extends Bloc {
 
   void getPopularMoviesList();
 
-  void getTopRatedMoviesList();
+  Future<int?> getTopRatedMoviesList();
 
   void getRecommendationsMoviesList({
-    required int id,
+    required int? id,
   });
 }

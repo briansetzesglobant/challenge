@@ -1,8 +1,8 @@
 import 'package:challenge/src/presentation/widget/widget_movies.dart';
 import 'package:flutter/material.dart';
 import '../../../domain/entity/movie/movie_entity.dart';
+import '../widget_text.dart';
 import 'person_image.dart';
-import '../widget_title.dart';
 import 'person_popularity.dart';
 
 class PersonPage extends StatelessWidget {
@@ -24,8 +24,8 @@ class PersonPage extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          WidgetTitle(
-            title: personName,
+          WidgetText(
+            text: personName,
           ),
           PersonImage(
             posterPath: posterPath,

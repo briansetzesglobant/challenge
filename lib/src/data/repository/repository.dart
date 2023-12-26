@@ -79,7 +79,7 @@ class Repository extends RepositoryInterface {
 
   @override
   Future<DataState<MoviesListEntity>> getRecommendationsMoviesList({
-    required int id,
+    required int? id,
   }) async {
     DataState<MoviesListEntity> moviesList =
         await apiService.getRecommendationsMoviesList(id: id);
