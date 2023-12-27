@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../core/bloc/bloc.dart';
 import '../../data/data_source/local/images_storage.dart';
@@ -9,7 +10,7 @@ class ImagesBloc extends Bloc {
   XFile? picture;
   late List<File> imagesList;
   late List<String> urlsList;
-  final ImagesStorage imagesStorage = ImagesStorage.instance;
+  final ImagesStorage imagesStorage = Get.find<ImagesStorage>();
 
   late StreamController<List<File>> _deviceImagesStreamController;
   late StreamController<List<String>> _storageImagesStreamController;

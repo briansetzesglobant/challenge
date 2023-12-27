@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:get/get.dart';
+
 import '../../core/bloc/movie_bloc_interface.dart';
 import '../../core/resource/data_state.dart';
 import '../../core/use_case/use_case_interface.dart';
@@ -10,10 +12,11 @@ import '../../domain/use_case/implementation/top_rated_movie_use_case.dart';
 class MovieBloc extends MovieBlocInterface {
   MovieBloc();
 
-  late final UseCaseInterface popularUseCase = PopularMovieUseCase();
-  late final UseCaseInterface topRatedUseCase = TopRatedMovieUseCase();
+  late final UseCaseInterface popularUseCase = Get.find<PopularMovieUseCase>();
+  late final UseCaseInterface topRatedUseCase =
+      Get.find<TopRatedMovieUseCase>();
   late final UseCaseInterface recommendationsUseCase =
-      RecommendationsMovieUseCase();
+      Get.find<RecommendationsMovieUseCase>();
 
   late StreamController<DataState<MoviesListEntity>>
       _popularMoviesListStreamController;

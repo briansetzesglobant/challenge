@@ -1,6 +1,7 @@
 import 'package:challenge/src/domain/entity/movie/movies_list_entity.dart';
 import 'package:challenge/src/domain/entity/person/person_entity.dart';
 import 'package:challenge/src/domain/entity/person/persons_list_entity.dart';
+import 'package:get/get.dart';
 import '../../core/resource/data_state.dart';
 import '../../core/util/strings.dart';
 import '../../domain/entity/movie/movie_entity.dart';
@@ -9,8 +10,8 @@ import '../data_source/remote/api_service.dart';
 import '../../domain/repository/repository_interface.dart';
 
 class Repository extends RepositoryInterface {
-  final ApiService apiService = ApiService();
-  final ChallengeDataBase challengeDataBase = ChallengeDataBase.instance;
+  final ApiService apiService = Get.find<ApiService>();
+  final ChallengeDataBase challengeDataBase = Get.find<ChallengeDataBase>();
 
   @override
   Future<DataState<PersonsListEntity>> getPersonsList() async {

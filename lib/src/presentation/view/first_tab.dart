@@ -1,6 +1,7 @@
 import 'package:challenge/src/presentation/widget/first_tab/person_page.dart';
 import 'package:challenge/src/presentation/widget/widget_error.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../core/bloc/person_bloc_interface.dart';
 import '../../core/resource/data_state.dart';
 import '../../domain/entity/person/persons_list_entity.dart';
@@ -20,7 +21,7 @@ class FirstTab extends StatefulWidget {
 }
 
 class _FirstTabState extends State<FirstTab> {
-  final PersonBlocInterface _blocInterface = PersonBloc();
+  final PersonBlocInterface _blocInterface = Get.find<PersonBloc>();
 
   @override
   void initState() {

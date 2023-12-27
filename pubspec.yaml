@@ -51,6 +51,7 @@ dependencies:
   build_runner: ^2.3.3
   floor: ^1.4.2
   floor_generator: ^1.4.2
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:

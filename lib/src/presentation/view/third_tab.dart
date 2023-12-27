@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../core/util/strings.dart';
 import '../bloc/images_bloc.dart';
@@ -20,7 +21,7 @@ class ThirdTab extends StatefulWidget {
 }
 
 class _ThirdTabState extends State<ThirdTab> {
-  final ImagesBloc imagesBloc = ImagesBloc();
+  final ImagesBloc imagesBloc = Get.find<ImagesBloc>();
 
   @override
   void initState() {

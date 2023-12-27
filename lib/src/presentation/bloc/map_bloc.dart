@@ -1,10 +1,12 @@
 import 'dart:async';
+import 'package:get/get.dart';
+
 import '../../core/bloc/bloc.dart';
 import '../../data/data_source/local/location_data_base.dart';
 import '../../data/model/location_model/location_model.dart';
 
 class MapBloc extends Bloc {
-  final LocationDatabase locationDatabase = LocationDatabase.instance;
+  final LocationDatabase locationDatabase = Get.find<LocationDatabase>();
 
   late StreamController<List<LocationModel>> _locationsStreamController;
 
