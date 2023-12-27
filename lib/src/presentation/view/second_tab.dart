@@ -1,6 +1,7 @@
 import 'package:challenge/src/presentation/bloc/movie_bloc.dart';
 import 'package:challenge/src/presentation/widget/widget_empty.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../core/bloc/movie_bloc_interface.dart';
 import '../../core/resource/data_state.dart';
 import '../../domain/entity/movie/movies_list_entity.dart';
@@ -21,7 +22,7 @@ class SecondTab extends StatefulWidget {
 }
 
 class _SecondTabState extends State<SecondTab> {
-  final MovieBlocInterface _blocInterface = MovieBloc();
+  final MovieBlocInterface _blocInterface = Get.find<MovieBloc>();
 
   @override
   void initState() {

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:challenge/src/domain/entity/person/persons_list_entity.dart';
 import 'package:challenge/src/domain/use_case/implementation/person_use_case.dart';
+import 'package:get/get.dart';
 import '../../core/bloc/person_bloc_interface.dart';
 import '../../core/resource/data_state.dart';
 import '../../core/use_case/use_case_interface.dart';
@@ -8,7 +9,7 @@ import '../../core/use_case/use_case_interface.dart';
 class PersonBloc extends PersonBlocInterface {
   PersonBloc();
 
-  late final UseCaseInterface useCaseInterface = PersonUseCase();
+  late final UseCaseInterface useCaseInterface = Get.find<PersonUseCase>();
 
   late StreamController<DataState<PersonsListEntity>>
       _personsListStreamController;

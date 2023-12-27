@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
@@ -22,7 +23,7 @@ class FourthTab extends StatefulWidget {
 }
 
 class _FourthTabState extends State<FourthTab> {
-  final MapBloc mapBloc = MapBloc();
+  final MapBloc mapBloc = Get.find<MapBloc>();
   Location location = Location();
   late bool serviceEnabled;
   late PermissionStatus permissionGranted;

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:challenge/src/core/util/endpoints.dart';
 import 'package:challenge/src/data/model/person/persons_list.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart';
 import '../../../core/resource/data_state.dart';
 import '../../../core/util/strings.dart';
@@ -10,7 +11,7 @@ import '../../../domain/entity/person/persons_list_entity.dart';
 import '../../model/movie/movies_list.dart';
 
 class ApiService {
-  Client client = Client();
+  Client client = Get.find<Client>();
 
   Future<DataState<PersonsListEntity>> getPersonsList() async {
     try {
