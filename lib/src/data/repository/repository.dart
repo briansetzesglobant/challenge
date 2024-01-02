@@ -20,7 +20,7 @@ class Repository extends RepositoryInterface {
     switch (personsList.type) {
       case DataStateType.success:
         try {
-          challengeDataBase.deleteAllPersonEntity();
+          await challengeDataBase.deleteAllPersonEntity();
           for (var person in personsList.data!) {
             await challengeDataBase.insertPersonEntity(person);
           }
@@ -31,7 +31,7 @@ class Repository extends RepositoryInterface {
           );
         } catch (exception) {
           return DataFailed(
-            '${Strings.errorMessage} ${exception.toString()}',
+            '${Strings.errorMessagePerson} ${exception.toString()}',
           );
         }
       case DataStateType.empty:
@@ -50,7 +50,7 @@ class Repository extends RepositoryInterface {
           PersonsListEntity(
             page: 1,
             results: results,
-            totalResults: 20,
+            totalResults: 1,
             totalPages: 1,
           ),
         );
@@ -59,7 +59,7 @@ class Repository extends RepositoryInterface {
       }
     } catch (exception) {
       return DataFailed(
-        '${Strings.errorMessage} ${exception.toString()}',
+        '${Strings.errorMessagePerson} ${exception.toString()}',
       );
     }
   }
@@ -96,7 +96,7 @@ class Repository extends RepositoryInterface {
             MovieEntity? movieEntity =
                 await challengeDataBase.selectMovieEntity(movie.id);
             if (movieEntity != null) {
-              challengeDataBase.deleteMovieEntity(movie.id);
+              await challengeDataBase.deleteMovieEntity(movie.id);
               await challengeDataBase.insertMovieEntity(movie.copyWith(
                   category: '${movieEntity.category},${movie.category}'));
             } else {
@@ -115,7 +115,7 @@ class Repository extends RepositoryInterface {
           );
         } catch (exception) {
           return DataFailed(
-            '${Strings.errorMessage} ${exception.toString()}',
+            '${Strings.errorMessageMovie} ${exception.toString()}',
           );
         }
       case DataStateType.empty:
@@ -135,7 +135,7 @@ class Repository extends RepositoryInterface {
           MoviesListEntity(
             page: 1,
             results: results,
-            totalResults: 20,
+            totalResults: 1,
             totalPages: 1,
           ),
         );
@@ -144,7 +144,7 @@ class Repository extends RepositoryInterface {
       }
     } catch (exception) {
       return DataFailed(
-        '${Strings.errorMessage} ${exception.toString()}',
+        '${Strings.errorMessageMovie} ${exception.toString()}',
       );
     }
   }

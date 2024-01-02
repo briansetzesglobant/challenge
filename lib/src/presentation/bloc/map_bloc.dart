@@ -23,14 +23,14 @@ class MapBloc extends Bloc {
     _locationsStreamController.close();
   }
 
-  void insertLocation(LocationModel location) async {
-    locationDatabase.insertLocation(location);
+  Future<void> insertLocation(LocationModel location) async {
+    await locationDatabase.insertLocation(location);
     if (!_locationsStreamController.isClosed) {
-      getLocations();
+      await getLocations();
     }
   }
 
-  void getLocations() async {
+  Future<void> getLocations() async {
     final locations = await locationDatabase.getLocations();
     _locationsStreamController.sink.add(locations);
   }

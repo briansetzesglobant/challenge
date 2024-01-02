@@ -11,20 +11,13 @@ import '../../data/model/location_model/location_model.dart';
 import '../bloc/map_bloc.dart';
 
 class FourthTab extends StatefulWidget {
-  const FourthTab({
-    super.key,
-    required this.title,
-  });
-
-  final String title;
-
   @override
   _FourthTabState createState() => _FourthTabState();
 }
 
 class _FourthTabState extends State<FourthTab> {
   final MapBloc mapBloc = Get.find<MapBloc>();
-  Location location = Location();
+  Location location = Get.find<Location>();
   late bool serviceEnabled;
   late PermissionStatus permissionGranted;
 
@@ -35,8 +28,12 @@ class _FourthTabState extends State<FourthTab> {
     _checkPermission();
     location.enableBackgroundMode(enable: true);
     mapBloc.initialize();
-    mapBloc.getLocations();
+    _getLocations();
     _track();
+  }
+
+  void _getLocations() async {
+    await mapBloc.getLocations();
   }
 
   @override
@@ -48,7 +45,7 @@ class _FourthTabState extends State<FourthTab> {
   void _track() {
     MapTimer.getInstance((_) async {
       final LocationData locationData = await location.getLocation();
-      mapBloc.insertLocation(
+      await mapBloc.insertLocation(
         LocationModel(
           latitude: locationData.latitude,
           longitude: locationData.longitude,
@@ -142,16 +139,6 @@ class _FourthTabState extends State<FourthTab> {
 
   @override
   Widget build(BuildContext context) {
-    /*return const Center(
-      child: Text(
-        'Fourth Tab',
-        style: TextStyle(
-          fontSize: 25.0,
-          color: Colors.blue,
-          decoration: TextDecoration.underline,
-        ),
-      ),
-    );*/
     return StreamBuilder<List<LocationModel>>(
       stream: mapBloc.locationsStream,
       builder: (

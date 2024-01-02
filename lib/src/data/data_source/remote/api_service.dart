@@ -33,12 +33,12 @@ class ApiService {
         }
       } else {
         return DataFailed(
-          '${Strings.errorMessage} ${response.statusCode}',
+          '${Strings.errorMessagePerson} ${response.statusCode}',
         );
       }
     } catch (exception) {
       return DataFailed(
-        '${Strings.errorMessage} ${exception.toString()}',
+        '${Strings.errorMessagePerson} ${exception.toString()}',
       );
     }
   }
@@ -66,12 +66,12 @@ class ApiService {
         }
       } else {
         return DataFailed(
-          '${Strings.errorMessage} ${response.statusCode}',
+          '${Strings.errorMessageMovie} ${response.statusCode}',
         );
       }
     } catch (exception) {
       return DataFailed(
-        '${Strings.errorMessage} ${exception.toString()}',
+        '${Strings.errorMessageMovie} ${exception.toString()}',
       );
     }
   }
@@ -99,12 +99,12 @@ class ApiService {
         }
       } else {
         return DataFailed(
-          '${Strings.errorMessage} ${response.statusCode}',
+          '${Strings.errorMessageMovie} ${response.statusCode}',
         );
       }
     } catch (exception) {
       return DataFailed(
-        '${Strings.errorMessage} ${exception.toString()}',
+        '${Strings.errorMessageMovie} ${exception.toString()}',
       );
     }
   }
@@ -137,12 +137,12 @@ class ApiService {
         }
       } else {
         return DataFailed(
-          '${Strings.errorMessage} ${response.statusCode}',
+          '${Strings.errorMessageMovie} ${response.statusCode}',
         );
       }
     } catch (exception) {
       return DataFailed(
-        '${Strings.errorMessage} ${exception.toString()}',
+        '${Strings.errorMessageMovie} ${exception.toString()}',
       );
     }
   }

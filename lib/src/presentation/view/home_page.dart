@@ -47,19 +47,11 @@ class _HomePageState extends State<HomePage> {
             _page = newPage;
           });
         },
-        children: const <Widget>[
-          FirstTab(
-            title: 'First tab',
-          ),
-          SecondTab(
-            title: 'Second Tab',
-          ),
-          ThirdTab(
-            title: 'Third Tab',
-          ),
-          FourthTab(
-            title: 'Fourth Tab',
-          ),
+        children: <Widget>[
+          FirstTab(),
+          SecondTab(),
+          ThirdTab(),
+          FourthTab(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

@@ -10,13 +10,6 @@ import '../widget/widget_movies.dart';
 import '../widget/widget_text.dart';
 
 class SecondTab extends StatefulWidget {
-  const SecondTab({
-    super.key,
-    required this.title,
-  });
-
-  final String title;
-
   @override
   _SecondTabState createState() => _SecondTabState();
 }
