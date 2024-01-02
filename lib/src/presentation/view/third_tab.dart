@@ -1,27 +1,18 @@
 import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../core/util/strings.dart';
-import '../bloc/images_bloc.dart';
+import '../bloc/image_bloc.dart';
 import '../widget/third_tab/image_button.dart';
 
 class ThirdTab extends StatefulWidget {
-  const ThirdTab({
-    super.key,
-    required this.title,
-  });
-
-  final String title;
-
   @override
   _ThirdTabState createState() => _ThirdTabState();
 }
 
 class _ThirdTabState extends State<ThirdTab> {
-  final ImagesBloc imagesBloc = Get.find<ImagesBloc>();
+  final ImageBloc imagesBloc = Get.find<ImageBloc>();
 
   @override
   void initState() {
@@ -151,12 +142,12 @@ class _ThirdTabState extends State<ThirdTab> {
     );
   }
 
-  _openGallery() async {
-    imagesBloc.getGalleryImages();
+  Future<void> _openGallery() async {
+    await imagesBloc.getGalleryImages();
   }
 
-  _openCamera() async {
-    imagesBloc.getCameraImages();
+  Future<void> _openCamera() async {
+    await imagesBloc.getCameraImages();
   }
 
   Future<void> _showChoiceDialog(BuildContext context) {
@@ -178,8 +169,8 @@ class _ThirdTabState extends State<ThirdTab> {
                 children: [
                   ImageButton(
                       text: Strings.imagesPageGallery,
-                      onPressed: () {
-                        _openGallery();
+                      onPressed: () async {
+                        await _openGallery();
                         Navigator.of(context).pop();
                       }),
                   const Padding(
@@ -189,8 +180,8 @@ class _ThirdTabState extends State<ThirdTab> {
                   ),
                   ImageButton(
                       text: Strings.imagesPageCamera,
-                      onPressed: () {
-                        _openCamera();
+                      onPressed: () async {
+                        await _openCamera();
                         Navigator.of(context).pop();
                       }),
                 ],

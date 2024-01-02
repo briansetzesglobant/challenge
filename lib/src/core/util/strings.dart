@@ -1,6 +1,8 @@
 abstract class Strings {
-  static const String errorMessage =
+  static const String errorMessageMovie =
       'An error has occurred while loading movies:';
+  static const String errorMessagePerson =
+      'An error has occurred while loading persons:';
   static const String locationCollectionName = 'location';
 
   static const String imagesPageDefaultMessageDeviceImages =

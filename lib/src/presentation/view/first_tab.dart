@@ -9,13 +9,6 @@ import '../bloc/person_bloc.dart';
 import '../widget/widget_empty.dart';
 
 class FirstTab extends StatefulWidget {
-  const FirstTab({
-    super.key,
-    required this.title,
-  });
-
-  final String title;
-
   @override
   _FirstTabState createState() => _FirstTabState();
 }

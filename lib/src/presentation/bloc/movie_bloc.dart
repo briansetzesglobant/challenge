@@ -1,12 +1,11 @@
 import 'dart:async';
 import 'package:get/get.dart';
-
 import '../../core/bloc/movie_bloc_interface.dart';
 import '../../core/resource/data_state.dart';
 import '../../core/use_case/use_case_interface.dart';
 import '../../domain/entity/movie/movies_list_entity.dart';
 import '../../domain/use_case/implementation/popular_movie_use_case.dart';
-import '../../domain/use_case/implementation/recommendations_use_case.dart';
+import '../../domain/use_case/implementation/recommendations_movie_use_case.dart';
 import '../../domain/use_case/implementation/top_rated_movie_use_case.dart';
 
 class MovieBloc extends MovieBlocInterface {

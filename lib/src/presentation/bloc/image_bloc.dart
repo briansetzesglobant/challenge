@@ -5,8 +5,8 @@ import 'package:image_picker/image_picker.dart';
 import '../../core/bloc/bloc.dart';
 import '../../data/data_source/local/images_storage.dart';
 
-class ImagesBloc extends Bloc {
-  ImagePicker imagePicker = ImagePicker();
+class ImageBloc extends Bloc {
+  ImagePicker imagePicker = Get.find<ImagePicker>();
   XFile? picture;
   late List<File> imagesList;
   late List<String> urlsList;
@@ -37,7 +37,7 @@ class ImagesBloc extends Bloc {
 
   bool hasSelectedImages() => imagesList.isNotEmpty;
 
-  void _getImages(ImageSource source) async {
+  Future<void> _getImages(ImageSource source) async {
     picture = await imagePicker.pickImage(source: source);
     if (picture != null) {
       imagesList.add(File(picture!.path));
@@ -47,15 +47,15 @@ class ImagesBloc extends Bloc {
     _storageImagesStreamController.sink.add(urlsList);
   }
 
-  void getGalleryImages() {
-    _getImages(ImageSource.gallery);
+  Future<void> getGalleryImages() async {
+    await _getImages(ImageSource.gallery);
   }
 
-  void getCameraImages() async {
-    _getImages(ImageSource.camera);
+  Future<void> getCameraImages() async {
+    await _getImages(ImageSource.camera);
   }
 
-  void getStorageImages() async {
+  Future<void> getStorageImages() async {
     urlsList = await imagesStorage.uploadImages(imagesList);
     imagesList = [];
     _storageImagesStreamController.sink.add(urlsList);
